@@ -3,7 +3,8 @@ from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import {
 	getFirestore,
 	collection,
-	addDoc
+	addDoc,
+	getDocs
 }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
@@ -34,10 +35,30 @@ async function saveDiary() {
 		createdAt : new Date()
 
 	});
-	alert("保存完了！");                      
+	alert("保存完了！");        
+	loadDiaries();              
+}
+
+async function loadDiaries() {
+	const diaryList = 
+	  document.getElementById("diaryList");
+	  diaryList.innerHTML = "";
+	const querySnapshot = 
+	  await getDocs(collection(db, "diaries"));
+	querySnapshot.forEach((doc) => {
+		const data = doc.data();
+		diaryList.innerHTML += `
+		<div>
+		  <h3>${data.title}</h3>
+		  <p>${data.content}</p>
+		  <hr>
+		</div>
+		`;
+	});
 }
 
 window.saveDiary = saveDiary;            
+loadDiaries();
 
 
 
