@@ -40,11 +40,13 @@ async function saveDiary() {
 }
 
 async function loadDiaries() {
+	console.log("loadDiaries開始")
 	const diaryList = 
 	  document.getElementById("diaryList");
 	  diaryList.innerHTML = "";
 	const querySnapshot = 
 	  await getDocs(collection(db, "diaries"));
+	console.log("件数：", querySnapshot.size);
 	querySnapshot.forEach((doc) => {
 		const data = doc.data();
 		diaryList.innerHTML += `
