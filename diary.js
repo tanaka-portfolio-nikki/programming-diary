@@ -52,6 +52,9 @@ async function loadDiaries() {
 		diaryList.innerHTML += `
 		<div>
 		  <h3>${data.title}</h3>
+		  <small>
+			${new Date(data.createdAt.seconds * 1000).toLocalString("ja-JP")}
+		  </small>
 		  <p>${data.content}</p>
 		  <hr>
 		</div>
