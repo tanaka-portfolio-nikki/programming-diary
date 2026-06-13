@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset = "UTF-8">
+  <title>北東京の花畑</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+   
+<style>
+body{
+    background-color : #e6e6fa ;
+    font-family: "Zen Maru Gothic", "ZCOOL XiaoWei", "Noto Serif JP";
+    font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+  <h1 id="title">プログラミング日記</h1>
+  <p>今日の進捗は？</p>
+
+  <input id = "diaryTitle" placeholder="タイトル">
+
+  <textarea id = "diaryContent"
+  placeholder="今日の進捗は？">
+  </textarea>
+
+<button onclick="saveDiary()">保存
+</button>
+
+<script type = "module" src="diary.js"></script>
+</body>
+</html>
