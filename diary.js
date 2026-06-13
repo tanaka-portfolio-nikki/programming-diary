@@ -49,11 +49,12 @@ async function loadDiaries() {
 	console.log("件数：", querySnapshot.size);
 	querySnapshot.forEach((doc) => {
 		const data = doc.data();
+
 		diaryList.innerHTML += `
 		<div>
 		  <h3>${data.title}</h3>
 		  <small>
-			${new Date(data.createdAt.seconds * 1000).toLocaleString("ja-JP")}
+			${new Date(data.createdAt.toData().toLocaleString("ja-JP")}
 		  </small>
 		  <p>${data.content}</p>
 		  <hr>
