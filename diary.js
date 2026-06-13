@@ -53,7 +53,7 @@ async function loadDiaries() {
 		<div>
 		  <h3>${data.title}</h3>
 		  <small>
-			${new Date(data.createdAt.seconds * 1000).toLocalString("ja-JP")}
+			${new Date(data.createdAt).toLocaleString("ja-JP")}
 		  </small>
 		  <p>${data.content}</p>
 		  <hr>
