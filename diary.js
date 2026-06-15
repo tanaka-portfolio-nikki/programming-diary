@@ -5,6 +5,7 @@ import {
 	collection,
 	addDoc,
 	getDocs
+	orderBy
 }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
@@ -32,7 +33,7 @@ async function saveDiary() {
 	await addDoc(collection(db,"diaries"),{                  
 		title : title,
 		content : content,
-		createdAt : new Date()
+		createdAt : serverTimestamp()
 
 	});
 	alert("保存完了！");        
@@ -44,6 +45,12 @@ async function loadDiaries() {
 	const diaryList = 
 	  document.getElementById("diaryList");
 	  diaryList.innerHTML = "";
+
+    const q = query(
+    	collection(db, "diaries"),
+    	orderBy("createdAt", "desc")
+    	);
+
 	const querySnapshot = 
 	  await getDocs(collection(db, "diaries"));
 	console.log("件数：", querySnapshot.size);
