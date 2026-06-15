@@ -5,7 +5,9 @@ import {
 	collection,
 	addDoc,
 	getDocs,
-	orderBy
+	query,
+	orderBy,
+	serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
