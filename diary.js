@@ -4,7 +4,7 @@ import {
 	getFirestore,
 	collection,
 	addDoc,
-	getDocs
+	getDocs,
 	orderBy
 }
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
@@ -51,6 +51,8 @@ async function loadDiaries() {
     	orderBy("createdAt", "desc")
     	);
 
+    const querySnapshot = await getDocs(q);
+
 	const querySnapshot = 
 	  await getDocs(collection(db, "diaries"));
 	console.log("件数：", querySnapshot.size);
@@ -61,7 +63,13 @@ async function loadDiaries() {
 		<div>
 		  <h3>${data.title}</h3>
 		  <small>
-			${data.createdAt.toDate().toLocaleString("ja-JP")}
+			${data.createdAt.toDate().toLocaleString("ja-JP", {
+				year: "numeric",
+				month: "numeric",
+				day: "numeric",
+				hour: "2-digit",
+				minute: "2-digit"
+				})}
 		  </small>
 		  <p>${data.content}</p>
 		  <hr>
