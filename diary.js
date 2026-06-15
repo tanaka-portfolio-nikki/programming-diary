@@ -53,8 +53,6 @@ async function loadDiaries() {
 
     const querySnapshot = await getDocs(q);
 
-	const querySnapshot = 
-	  await getDocs(collection(db, "diaries"));
 	console.log("件数：", querySnapshot.size);
 	querySnapshot.forEach((doc) => {
 		const data = doc.data();
